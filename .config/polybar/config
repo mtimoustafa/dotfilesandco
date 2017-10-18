@@ -1,0 +1,153 @@
+[bar/bar]
+
+font-0 = "Overpass Mono:pixelsize=10;2.25"
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+fixed-center = true
+
+width = 100%
+height = 30
+
+bottom = true
+
+background = #1d1f21
+foreground = #707880
+
+radius = 0.0
+
+# line-size = 1
+# line-color = #f00
+
+# border-size = 2
+# border-color = #00ff00
+padding-left = 1
+padding-right = 1
+module-margin = 0
+
+modules-left = i3 
+modules-center = date
+modules-right = wlan eth cpu memory battery
+
+[module/i3]
+strip-wsnumbers = true
+type = internal/i3
+format = <label-state> <label-mode>
+
+label-focused = %index%
+label-focused-foreground = #cc6666
+label-focused-background = #1d1f21
+label-focused-underline = #fba922
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 1
+
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 1
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %A, %d %B %I:%M %p
+
+# [module/github]
+# type = internal/github
+
+# ; Accessing an access token stored in file
+# token = ${file:/path/to/file/containing/github/access.token}
+
+# ; Accessing an access token stored in an environment variable
+# token = ${env:GITHUB_ACCESS_TOKEN}
+
+# ; Whether empty notifications should be displayed or not
+# empty-notifications = false
+
+[module/title]
+type = internal/xwindow
+# format-background = #f00
+format-foreground = #f0c674
+format-padding = 1
+label-maxlen = 50
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = / 
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU "
+format-suffix = " " 
+format-prefix-foreground = #707880
+format-underline = #f90000
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "MEM "
+format-prefix-foreground = #707880
+format-suffix = " "
+format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+format-connected = <ramp-signal> <label-connected>
+format-connected-suffix = " | "
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+label-connected = %essid% %downspeed:9%
+
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+format-connected = <ramp-signal> <label-connected>
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+label-connected = %essid% %downspeed:9%
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ADP1
+full-at = 98
+
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+format-full = <label-full>
+
+format-charging-prefix = " | "
+format-discharging-prefix = " | "
+format-full-prefix = " | "
+
+label-charging = Charging: %percentage%%
+label-discharging = Battery: %percentage%%
+label-full = Full: %percentage%%
+
