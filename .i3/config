@@ -10,7 +10,6 @@
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
-#font Overpass Mono:pixelsize=10;2.25
 font pango:Overpass Mono 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -190,9 +189,9 @@ exec i3-config-wizard
 #for_window [class="^.*"] border pixel 0
 
 # i3gaps config
-gaps inner 20
+gaps inner 10
 gaps outer 0
-#smart_gaps on
+smart_gaps on
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
@@ -200,8 +199,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
+#bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+#bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -211,6 +210,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Launch polybar on startup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# Launch compton on startup for terminal transparency
+exec_always --no-startup-id compton -b --backend glx
 
 # Wallpaper!
 exec --no-startup-id feh --bg-fill $HOME/Pictures/wallhaven-253019.png
@@ -233,7 +234,7 @@ new_float pixel 2
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources for some reason.
 set_from_resource $bdr i3wm.color0 #f0f0f0
-set_from_resource $bdrfcs i3wm.color4 #f0f0f0
+set_from_resource $bdrfcs i3wm.color1 #f0f0f0
 set_from_resource $txt i3wm.color2 #f0f0f0
 
 # class                 border  backgr. text indicator child_border

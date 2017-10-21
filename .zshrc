@@ -9,6 +9,9 @@ alias configfiles='/usr/bin/git --git-dir=/home/spectre/.cfg/ --work-tree=/home/
 
 # Run wal for every terminal
 (wal -tr &)
+
+# Make st the default terminal for i3-sensible-terminal
+export TERMINAL=st
 #============================================
 
 # If you come from bash you might have to change your $PATH.
