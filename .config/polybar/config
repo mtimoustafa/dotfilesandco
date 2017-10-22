@@ -1,6 +1,12 @@
 [colors]
 background = ${xrdb:color0:#1d1f21}
 foreground = ${xrdb:color4:#707880}
+focusedbg = ${xrdb:color4:#1d1f21}
+focusedfg = ${xrdb:color7:#707880}
+urgentbg = ${xrdb:color7:#1d1f21}
+urgentfg = ${xrdb:color4:#707880}
+labelfg = ${xrdb:color8:#ccc}
+
 
 [bar/bar]
 width = 100%
@@ -25,7 +31,7 @@ scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 modules-left = i3 
-modules-center = date
+modules-center = date time
 modules-right = volume wlan eth cpu memory battery
 
 
@@ -35,39 +41,37 @@ type = internal/i3
 format = <label-state> <label-mode>
 
 label-focused = %index%
-label-focused-foreground = #cc6666
-label-focused-background = #1d1f21
-label-focused-underline = #fba922
+label-focused-foreground = ${colors.focusedfg}
+label-focused-background = ${colors.focusedbg}
+#label-focused-underline = #fba922
 label-focused-padding = 1
 
 label-unfocused = %index%
 label-unfocused-padding = 1
 
 label-visible = %index%
-label-visible-underline = #555555
+#label-visible-underline = #555555
 label-visible-padding = 1
 
 label-urgent = %index%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
+label-urgent-foreground = ${colors.urgentfg}
+label-urgent-background = ${colors.urgentbg}
 label-urgent-padding = 1
+
 
 [module/date]
 type = internal/date
 interval = 1.0
-date = %A, %d %B %I:%M %p
+date = %A, %d %B %Y
+format-margin = 1
 
-# [module/github]
-# type = internal/github
+[module/time]
+type = internal/date
+interval = 1.0
+date = %H:%M:%S
+format-margin = 1
+format-foreground = ${colors.labelfg}
 
-# ; Accessing an access token stored in file
-# token = ${file:/path/to/file/containing/github/access.token}
-
-# ; Accessing an access token stored in an environment variable
-# token = ${env:GITHUB_ACCESS_TOKEN}
-
-# ; Whether empty notifications should be displayed or not
-# empty-notifications = false
 
 [module/title]
 type = internal/xwindow

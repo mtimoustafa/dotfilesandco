@@ -211,7 +211,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # Launch polybar on startup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Launch compton on startup for terminal transparency
-exec_always --no-startup-id compton -b --backend glx
+exec_always --no-startup-id compton -b
 
 # Wallpaper!
 exec --no-startup-id feh --bg-fill $HOME/Pictures/wallhaven-253019.png
