@@ -213,6 +213,12 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Launch compton on startup for terminal transparency
 exec_always --no-startup-id compton -b
 
+# Get unity's touchpad tweaks up
+exec_always --no-startup-id unity-settings-daemon
+
+# Redshift so my eyes don't burn at night pls thx
+exec_always --no-startup-id redshift -l 43.450301:-80.48192
+
 # Wallpaper!
 exec --no-startup-id feh --bg-fill $HOME/Pictures/wallhaven-253019.png
 # Theme to go along with wallpaper
